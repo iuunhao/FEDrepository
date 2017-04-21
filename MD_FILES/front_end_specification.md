@@ -1,15 +1,100 @@
-# 前端规范
 
-同一团队代码，应该出自同门。
+<h1>
+  <br>
+  <br>
+  <p align="center">前端规范</p>
+  <br>
+  <br>
+</h1>
+<br>
+<br>
+<p align="center">✨ 同一团队代码 应该出自同门 ✨</p>
+<br>
+<br>
 
 ---
+
+# 目录
+
+* [命名规则](#命名规则)
+  * [项目命名](#项目命名)
+  * [目录命名](#目录命名)
+  * [JS文件命名](#JS文件命名)
+  * [CSS文件命名](#CSS文件命名)
+  * [HTML文件命名](#HTML文件命名)
+* [HTML](#HTML)
+  * [语法](#语法)
+  * [HTML5 doctyp](#HTML5 doctyp)
+  * [lang属性](#lang属性)
+  * [字符编码](#字符编码)
+  * [IE兼容模式](#IE兼容模式)
+  * [引入CSS,JS](#引入CSS,JS)
+  * [属性顺序](#属性顺序)
+  * [boolean属性](#boolean属性)
+  * [JS生成标签](#JS生成标签)
+  * [减少标签数量](#减少标签数量)
+  * [语义化](#语义化)
+  * [简洁](#简洁)
+* [CSS](#CSS)
+  * [缩进](#缩进)
+  * [分号](#分号)
+  * [空格](#空格)
+  * [空行](#空行)
+  * [换行](#换行)
+  * [注释](#注释)
+  * [引号](#引号)
+  * [命名](#命名)
+  * [属性声明顺序](#属性声明顺序)
+  * [颜色](#颜色)
+  * [属性简写](#属性简写)
+  * [媒体查询](#媒体查询)
+  * [盒模型](#盒模型)
+  * [指明](#指明)
+  * [覆盖](#覆盖)
+  * [继承](#继承)
+  * [供应商的前缀](#供应商的前缀)
+  * [动画](#动画)
+  * [单位](#单位)
+  * [绘图](#绘图)
+  * [其他](#其他)
+* [JavaScript](#JavaScript)
+  * [缩进](#缩进)
+  * [单行长度](#单行长度)
+  * [空格](#空格)
+  * [空行](#空行)
+  * [换行](#换行)
+  * [单行注释](#单行注释)
+  * [多行注释](#多行注释)
+  * [文档注释](#文档注释)
+  * [引号](#引号)
+  * [变量命名](#变量命名)
+  * [变量声明](#变量声明)
+  * [函数](#函数)
+  * [数组、对象](#数组、对象)
+  * [括号](#括号)
+  * [null](#null)
+  * [undefined](#undefined)
+  * [jshint](#jshint)
+  * [Statelessness](#Statelessness)
+  * [条件判断](#条件判断)
+  * [可读性](#可读性)
+  * [代码重用](#代码重用)
+  * [依赖](#依赖)
+  * [其他](#其他)
+* [其他](#其他)
+  * [images](#images)
+
+
+
+
+
 # 命名规则 
 
 ## 项目命名
 
 项目名称全部采用小写方式， 以下划线分隔。
 
-例：`vue_project_name`
+例：`my_project_name`
 
 ## 目录命名
 与项目命名规则相同。
@@ -180,11 +265,62 @@ boolean属性的存在表示取值为true，不存在则表示取值为false。
 <img class="avatar" src="...">
 ```
 
-## 实用高于完美
+## 语义化
 
-尽量遵循HTML标准和语义，但是不应该以浪费实用性作为代价；
+请确保正确使用语义化的标签，错误的用法甚至不如保守的用法。
 
-任何时候都要用尽量小的复杂度和尽量少的标签来解决问题。
+```html
+<!-- bad -->
+<h1>
+  <figure>
+    <img alt=Company src=logo.png>
+  </figure>
+</h1>
+
+<!-- good -->
+<h1>
+  <img alt=Company src=logo.png>
+</h1>
+```
+
+## 简洁
+
+确保代码简洁性，不要再采用XHTML的旧做法。
+
+```html
+<!-- bad -->
+<!doctype html>
+<html lang=en>
+  <head>
+    <meta http-equiv=Content-Type content="text/html; charset=utf-8" />
+    <title>Contact</title>
+    <link rel=stylesheet href=style.css type=text/css />
+  </head>
+  <body>
+    <h1>Contact me</h1>
+    <label>
+      Email address:
+      <input type=email placeholder=you@email.com required=required />
+    </label>
+    <script src=main.js type=text/javascript></script>
+  </body>
+</html>
+
+<!-- good -->
+<!doctype html>
+<html lang=en>
+  <meta charset=utf-8>
+  <title>Contact</title>
+  <link rel=stylesheet href=style.css>
+
+  <h1>Contact me</h1>
+  <label>
+    Email address:
+    <input type=email placeholder=you@email.com required>
+  </label>
+  <script src=main.js></script>
+</html>
+```
 
 # CSS
 
@@ -206,14 +342,17 @@ boolean属性的存在表示取值为true，不存在则表示取值为false。
 
 ## 分号
 
-每个属性声明末尾都要加分号。
+每个属性声明末尾都要加分号，不能漏写分号。
 
 ```css
-.element {
-    width: 20px;
-    height: 20px;
+/* bad */
+div {
+  color: red
+}
 
-    background-color: red;
+/* good */
+div {
+  color: red;
 }
 ```
 
@@ -238,7 +377,7 @@ boolean属性的存在表示取值为true，不存在则表示取值为false。
 * 注释'/'后和'/'前
 
 ```css
-/* not good */
+/* bad */
 .element {
     color :red! important;
     background-color: rgba(0,0,0,.5);
@@ -250,7 +389,7 @@ boolean属性的存在表示取值为true，不存在则表示取值为false。
     background-color: rgba(0, 0, 0, .5);
 }
 
-/* not good */
+/* bad */
 .element ,
 .dialog{
     ...
@@ -262,7 +401,7 @@ boolean属性的存在表示取值为true，不存在则表示取值为false。
 
 }
 
-/* not good */
+/* bad */
 .element>.dialog{
     ...
 }
@@ -272,7 +411,7 @@ boolean属性的存在表示取值为true，不存在则表示取值为false。
     ...
 }
 
-/* not good */
+/* bad */
 .element{
     ...
 }
@@ -282,7 +421,7 @@ boolean属性的存在表示取值为true，不存在则表示取值为false。
     ...
 }
 
-/* not good */
+/* bad */
 @if{
     ...
 }@else{
@@ -306,7 +445,7 @@ boolean属性的存在表示取值为true，不存在则表示取值为false。
 * 属性之间需要适当的空行，具体见属性声明顺序
 
 ```scss
-/* not good */
+/* bad */
 .element {
     ...
 }
@@ -344,7 +483,7 @@ boolean属性的存在表示取值为true，不存在则表示取值为false。
 * 多个规则的分隔符','后
 
 ```scss
-/* not good */
+/* bad */
 .element
 {color: red; background-color: black;}
 
@@ -354,7 +493,7 @@ boolean属性的存在表示取值为true，不存在则表示取值为false。
     background-color: black;
 }
 
-/* not good */
+/* bad */
 .element, .dialog {
     ...
 }
@@ -482,315 +621,6 @@ $colorBlack: #000;
 }
 ```
 
-```js
-// 下面是推荐的属性的顺序
-[
-    [
-        "display",
-        "visibility",
-        "float",
-        "clear",
-        "overflow",
-        "overflow-x",
-        "overflow-y",
-        "clip",
-        "zoom"
-    ],
-    [
-        "table-layout",
-        "empty-cells",
-        "caption-side",
-        "border-spacing",
-        "border-collapse",
-        "list-style",
-        "list-style-position",
-        "list-style-type",
-        "list-style-image"
-    ],
-    [
-        "-webkit-box-orient",
-        "-webkit-box-direction",
-        "-webkit-box-decoration-break",
-        "-webkit-box-pack",
-        "-webkit-box-align",
-        "-webkit-box-flex"
-    ],
-    [
-        "position",
-        "top",
-        "right",
-        "bottom",
-        "left",
-        "z-index"
-    ],
-    [
-        "margin",
-        "margin-top",
-        "margin-right",
-        "margin-bottom",
-        "margin-left",
-        "-webkit-box-sizing",
-        "-moz-box-sizing",
-        "box-sizing",
-        "border",
-        "border-width",
-        "border-style",
-        "border-color",
-        "border-top",
-        "border-top-width",
-        "border-top-style",
-        "border-top-color",
-        "border-right",
-        "border-right-width",
-        "border-right-style",
-        "border-right-color",
-        "border-bottom",
-        "border-bottom-width",
-        "border-bottom-style",
-        "border-bottom-color",
-        "border-left",
-        "border-left-width",
-        "border-left-style",
-        "border-left-color",
-        "-webkit-border-radius",
-        "-moz-border-radius",
-        "border-radius",
-        "-webkit-border-top-left-radius",
-        "-moz-border-radius-topleft",
-        "border-top-left-radius",
-        "-webkit-border-top-right-radius",
-        "-moz-border-radius-topright",
-        "border-top-right-radius",
-        "-webkit-border-bottom-right-radius",
-        "-moz-border-radius-bottomright",
-        "border-bottom-right-radius",
-        "-webkit-border-bottom-left-radius",
-        "-moz-border-radius-bottomleft",
-        "border-bottom-left-radius",
-        "-webkit-border-image",
-        "-moz-border-image",
-        "-o-border-image",
-        "border-image",
-        "-webkit-border-image-source",
-        "-moz-border-image-source",
-        "-o-border-image-source",
-        "border-image-source",
-        "-webkit-border-image-slice",
-        "-moz-border-image-slice",
-        "-o-border-image-slice",
-        "border-image-slice",
-        "-webkit-border-image-width",
-        "-moz-border-image-width",
-        "-o-border-image-width",
-        "border-image-width",
-        "-webkit-border-image-outset",
-        "-moz-border-image-outset",
-        "-o-border-image-outset",
-        "border-image-outset",
-        "-webkit-border-image-repeat",
-        "-moz-border-image-repeat",
-        "-o-border-image-repeat",
-        "border-image-repeat",
-        "padding",
-        "padding-top",
-        "padding-right",
-        "padding-bottom",
-        "padding-left",
-        "width",
-        "min-width",
-        "max-width",
-        "height",
-        "min-height",
-        "max-height"
-    ],
-    [
-        "font",
-        "font-family",
-        "font-size",
-        "font-weight",
-        "font-style",
-        "font-variant",
-        "font-size-adjust",
-        "font-stretch",
-        "font-effect",
-        "font-emphasize",
-        "font-emphasize-position",
-        "font-emphasize-style",
-        "font-smooth",
-        "line-height",
-        "text-align",
-        "-webkit-text-align-last",
-        "-moz-text-align-last",
-        "-ms-text-align-last",
-        "text-align-last",
-        "vertical-align",
-        "white-space",
-        "text-decoration",
-        "text-emphasis",
-        "text-emphasis-color",
-        "text-emphasis-style",
-        "text-emphasis-position",
-        "text-indent",
-        "-ms-text-justify",
-        "text-justify",
-        "letter-spacing",
-        "word-spacing",
-        "-ms-writing-mode",
-        "text-outline",
-        "text-transform",
-        "text-wrap",
-        "-ms-text-overflow",
-        "text-overflow",
-        "text-overflow-ellipsis",
-        "text-overflow-mode",
-        "-ms-word-wrap",
-        "word-wrap",
-        "-ms-word-break",
-        "word-break"
-    ],
-    [
-        "color",
-        "background",
-        "filter:progid:DXImageTransform.Microsoft.AlphaImageLoader",
-        "background-color",
-        "background-image",
-        "background-repeat",
-        "background-attachment",
-        "background-position",
-        "-ms-background-position-x",
-        "background-position-x",
-        "-ms-background-position-y",
-        "background-position-y",
-        "-webkit-background-clip",
-        "-moz-background-clip",
-        "background-clip",
-        "background-origin",
-        "-webkit-background-size",
-        "-moz-background-size",
-        "-o-background-size",
-        "background-size"
-    ],
-    [
-        "outline",
-        "outline-width",
-        "outline-style",
-        "outline-color",
-        "outline-offset",
-        "opacity",
-        "filter:progid:DXImageTransform.Microsoft.Alpha(Opacity",
-        "-ms-filter:\\'progid:DXImageTransform.Microsoft.Alpha",
-        "-ms-interpolation-mode",
-        "-webkit-box-shadow",
-        "-moz-box-shadow",
-        "box-shadow",
-        "filter:progid:DXImageTransform.Microsoft.gradient",
-        "-ms-filter:\\'progid:DXImageTransform.Microsoft.gradient",
-        "text-shadow"
-    ],
-    [
-        "-webkit-transition",
-        "-moz-transition",
-        "-ms-transition",
-        "-o-transition",
-        "transition",
-        "-webkit-transition-delay",
-        "-moz-transition-delay",
-        "-ms-transition-delay",
-        "-o-transition-delay",
-        "transition-delay",
-        "-webkit-transition-timing-function",
-        "-moz-transition-timing-function",
-        "-ms-transition-timing-function",
-        "-o-transition-timing-function",
-        "transition-timing-function",
-        "-webkit-transition-duration",
-        "-moz-transition-duration",
-        "-ms-transition-duration",
-        "-o-transition-duration",
-        "transition-duration",
-        "-webkit-transition-property",
-        "-moz-transition-property",
-        "-ms-transition-property",
-        "-o-transition-property",
-        "transition-property",
-        "-webkit-transform",
-        "-moz-transform",
-        "-ms-transform",
-        "-o-transform",
-        "transform",
-        "-webkit-transform-origin",
-        "-moz-transform-origin",
-        "-ms-transform-origin",
-        "-o-transform-origin",
-        "transform-origin",
-        "-webkit-animation",
-        "-moz-animation",
-        "-ms-animation",
-        "-o-animation",
-        "animation",
-        "-webkit-animation-name",
-        "-moz-animation-name",
-        "-ms-animation-name",
-        "-o-animation-name",
-        "animation-name",
-        "-webkit-animation-duration",
-        "-moz-animation-duration",
-        "-ms-animation-duration",
-        "-o-animation-duration",
-        "animation-duration",
-        "-webkit-animation-play-state",
-        "-moz-animation-play-state",
-        "-ms-animation-play-state",
-        "-o-animation-play-state",
-        "animation-play-state",
-        "-webkit-animation-timing-function",
-        "-moz-animation-timing-function",
-        "-ms-animation-timing-function",
-        "-o-animation-timing-function",
-        "animation-timing-function",
-        "-webkit-animation-delay",
-        "-moz-animation-delay",
-        "-ms-animation-delay",
-        "-o-animation-delay",
-        "animation-delay",
-        "-webkit-animation-iteration-count",
-        "-moz-animation-iteration-count",
-        "-ms-animation-iteration-count",
-        "-o-animation-iteration-count",
-        "animation-iteration-count",
-        "-webkit-animation-direction",
-        "-moz-animation-direction",
-        "-ms-animation-direction",
-        "-o-animation-direction",
-        "animation-direction"
-    ],
-    [
-        "content",
-        "quotes",
-        "counter-reset",
-        "counter-increment",
-        "resize",
-        "cursor",
-        "-webkit-user-select",
-        "-moz-user-select",
-        "-ms-user-select",
-        "user-select",
-        "nav-index",
-        "nav-up",
-        "nav-right",
-        "nav-down",
-        "nav-left",
-        "-moz-tab-size",
-        "-o-tab-size",
-        "tab-size",
-        "-webkit-hyphens",
-        "-moz-hyphens",
-        "hyphens",
-        "pointer-events"
-    ]
-]
-```
-
 ## 颜色
 
 颜色16进制用小写字母；
@@ -798,7 +628,7 @@ $colorBlack: #000;
 颜色16进制尽量用简写。
 
 ```css
-/* not good */
+/* bad */
 .element {
     color: #ABCDEF;
     background-color: #001122;
@@ -825,7 +655,7 @@ margin 和 padding 相反，需要使用简写；
 * animation
 
 ```css
-/* not good */
+/* bad */
 .element {
     transition: opacity 1s linear 2s;
 }
@@ -863,7 +693,169 @@ margin 和 padding 相反，需要使用简写；
 }
 ```
 
-## 杂项
+## 盒模型
+
+整个文档的盒模型应该要相同，最好使用global * { box-sizing: border-box; }定义。不要修改某个元素的盒模型。
+
+```css
+/* bad */
+div {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* good */
+div {
+  padding: 10px;
+}
+```
+
+## 指明
+
+不要让代码难于重写，让选择器更精确，减少ID、避免使用`!important`
+
+```css
+/* bad */
+.bar {
+  color: green !important;
+}
+.foo {
+  color: red;
+}
+
+/* good */
+.foo.bar {
+  color: green;
+}
+.foo {
+  color: red;
+}
+```
+
+## 覆盖
+
+覆盖样式会使维护和调试更困难，所以要尽量避免。
+```css
+/* bad */
+li {
+  visibility: hidden;
+}
+li:first-child {
+  visibility: visible;
+}
+
+/* good */
+li + li {
+  visibility: hidden;
+}
+```
+
+## 继承
+不要把可继承的样式重复声明：
+```css
+/* bad */
+div h1, div p {
+  text-shadow: 0 1px 0 #fff;
+}
+
+/* good */
+div {
+  text-shadow: 0 1px 0 #fff;
+}
+```
+
+## 供应商的前缀
+
+砍掉过时的供应商前缀。必须使用时，需要放在标准属性前：
+
+```css
+/* bad */
+div {
+  transform: scale(2);
+  -webkit-transform: scale(2);
+  -moz-transform: scale(2);
+  -ms-transform: scale(2);
+  transition: 1s;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -ms-transition: 1s;
+}
+
+/* good */
+div {
+  -webkit-transform: scale(2);
+  transform: scale(2);
+  transition: 1s;
+}
+```
+
+## 动画
+
+除了变形和改变透明度用animation，其他尽量使用transition。
+
+```css
+/* bad */
+div:hover {
+  animation: move 1s forwards;
+}
+@keyframes move {
+  100% {
+    margin-left: 100px;
+  }
+}
+
+/* good */
+div:hover {
+  transition: 1s;
+  transform: translateX(100px);
+}
+```
+
+## 单位
+
+可以不用单位时就不用。建议用rem。时间单位用s比ms好。
+
+```css
+/* bad */
+div {
+  margin: 0px;
+  font-size: .9em;
+  line-height: 22px;
+  transition: 500ms;
+}
+
+/* good */
+div {
+  margin: 0;
+  font-size: .9rem;
+  line-height: 1.5;
+  transition: .5s;
+}
+```
+
+## 绘图
+
+减少HTTPS请求，尽量用CSS绘图替代图片：
+
+```css
+/* bad */
+div::before {
+  content: url(white-circle.svg);
+}
+
+/* good */
+div::before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+}
+```
+
+## 其他
 
 * 不允许有空的规则；
 
@@ -892,11 +884,11 @@ margin 和 padding 相反，需要使用简写；
 * 尽量少用'*'选择器。
 
 ```css
-/* not good */
+/* bad */
 .element {
 }
 
-/* not good */
+/* bad */
 LI {
     ...
 }
@@ -906,7 +898,7 @@ li {
     ...
 }
 
-/* not good */
+/* bad */
 .element {
     color: rgba(0, 0, 0, 0.5);
 }
@@ -916,7 +908,7 @@ li {
     color: rgba(0, 0, 0, .5);
 }
 
-/* not good */
+/* bad */
 .element {
     width: 50.0px;
 }
@@ -926,7 +918,7 @@ li {
     width: 50px;
 }
 
-/* not good */
+/* bad */
 .element {
     width: 0px;
 }
@@ -936,7 +928,7 @@ li {
     width: 0;
 }
 
-/* not good */
+/* bad */
 .element {
     border-radius: 3px;
     -webkit-border-radius: 3px;
@@ -958,7 +950,7 @@ li {
     background:         linear-gradient(to bottom, #fff 0, #eee 100%);
 }
 
-/* not good */
+/* bad */
 .element {
     color: rgb(0, 0, 0);
     width: 50px;
@@ -1045,7 +1037,7 @@ do {
 * 函数的参数之间
 
 ```js
-// not good
+// bad
 var a = {
     b :1
 };
@@ -1055,7 +1047,7 @@ var a = {
     b: 1
 };
 
-// not good
+// bad
 ++ x;
 y ++;
 z = x?1:2;
@@ -1065,13 +1057,13 @@ z = x?1:2;
 y++;
 z = x ? 1 : 2;
 
-// not good
+// bad
 var a = [ 1, 2 ];
 
 // good
 var a = [1, 2];
 
-// not good
+// bad
 var a = ( 1+2 )*3;
 
 // good
@@ -1085,7 +1077,7 @@ var doSomething = function(a, b, c) {
 // no space before '('
 doSomething(item);
 
-// not good
+// bad
 for(i=0;i<6;i++){
     x++;
 }
@@ -1184,7 +1176,7 @@ var foo = {
 * 变量赋值后
 
 ```js
-// not good
+// bad
 var a = {
     b: 1
     , c: 2
@@ -1218,7 +1210,7 @@ try {
     ...
 }
 
-// not good
+// bad
 function test()
 {
     ...
@@ -1229,7 +1221,7 @@ function test() {
     ...
 }
 
-// not good
+// bad
 var a, foo = 7, b,
     c, bar = 8;
 
@@ -1308,7 +1300,7 @@ function foo(a, b, c, d, g, j) {
 最外层统一使用单引号。
 
 ```js
-// not good
+// bad
 var x = "test";
 
 // good
@@ -1344,7 +1336,7 @@ function Person(name) {
     this.name = name;
 }
 
-// not good
+// bad
 var body = $('body');
 
 // good
@@ -1392,7 +1384,7 @@ function doSomething(item) {
     // do something
 }
 
-// not good
+// bad
 doSomething (item);
 
 // good
@@ -1403,7 +1395,7 @@ doSomething(item);
     return 1;
 })();
 
-// not good
+// bad
 [1, 2].forEach(function x() {
     ...
 });
@@ -1413,7 +1405,7 @@ doSomething(item);
     ...
 });
 
-// not good
+// bad
 var a = [1, 2, function a() {
     ...
 }];
@@ -1438,7 +1430,7 @@ var doSomething = function(a, b, c) {
 * 数组、对象最后不要有逗号。
 
 ```js
-// not good
+// bad
 var a = {
     'b': 1
 };
@@ -1462,7 +1454,7 @@ var a = {
 下列关键字后必须有大括号（即使代码块的内容只有一行）：if, else,for, while, do, switch, try, catch, finally, with。
 
 ```js
-// not good
+// bad
 if (condition)
     doSomething();
 
@@ -1486,7 +1478,7 @@ if (condition) {
 * 不要与未初始化的变量做比较
 
 ```js
-// not good
+// bad
 function test(a, b) {
     if (b === null) {
         // not mean b is not supply
@@ -1516,7 +1508,7 @@ if (a === null) {
 使用typeof和字符串'undefined'对变量进行判断。
 
 ```js
-// not good
+// bad
 if (person === undefined) {
     ...
 }
@@ -1561,7 +1553,7 @@ if (typeof person === 'undefined') {
 * 不要像这样使用构造函数，例：new function () { ... }, new Object；
 
 ```js
-// not good
+// bad
 if (a == 1) {
     a++;
 }
@@ -1579,12 +1571,12 @@ for (key in obj) {
     }
 }
 
-// not good
+// bad
 Array.prototype.count = function(value) {
     return 4;
 };
 
-// not good
+// bad
 var x = 1;
 
 function test() {
@@ -1595,34 +1587,34 @@ function test() {
     x += 1;
 }
 
-// not good
+// bad
 function test() {
     console.log(x);
 
     var x = 1;
 }
 
-// not good
+// bad
 new Person();
 
 // good
 var person = new Person();
 
-// not good
+// bad
 delete(obj.attr);
 
 // good
 delete obj.attr;
 
-// not good
+// bad
 if (a = 10) {
     a++;
 }
 
-// not good
+// bad
 var a = [1, , , 2, 3];
 
-// not good
+// bad
 var nums = [];
 
 for (var i = 0; i < 10; i++) {
@@ -1633,7 +1625,7 @@ for (var i = 0; i < 10; i++) {
     }(i));
 }
 
-// not good
+// bad
 var singleton = new function() {
     var privateVar;
 
@@ -1647,7 +1639,113 @@ var singleton = new function() {
 };
 ```
 
-## 杂项
+## Statelessness
+
+尽量保持代码功能简单化，每个方法都对其他其他代码没有负影响。不使用外部数据。返回一个新对象而不是覆盖原有的对象。
+
+```js
+// bad
+const merge = (target, ...sources) => Object.assign(target, ...sources);
+merge({ foo: "foo" }, { bar: "bar" }); // => { foo: "foo", bar: "bar" }
+
+// good
+const merge = (...sources) => Object.assign({}, ...sources);
+merge({ foo: "foo" }, { bar: "bar" }); // => { foo: "foo", bar: "bar" }
+```
+
+## 条件判断
+
+用多个if，优于 if 、else if、else 和switch。
+
+```js
+// bad
+var grade;
+if (result < 50)
+  grade = "bad";
+else if (result < 90)
+  grade = "good";
+else
+  grade = "excellent";
+
+// good
+const grade = (() => {
+  if (result < 50)
+    return "bad";
+  if (result < 90)
+    return "good";
+  return "excellent";
+})();
+```
+
+## 可读性
+
+不要使用自以为是的技巧：
+
+```js
+// bad
+foo || doSomething();
+
+// good
+if (!foo) doSomething();
+
+// bad
+void function() { /* IIFE */ }();
+
+// good
+(function() { /* IIFE */ }());
+
+// bad
+const n = ~~3.14;
+
+// good
+const n = Math.floor(3.14);
+```
+
+## 代码重用
+
+对写些小型、组件化、可重用的方法。
+
+```js
+// bad
+arr[arr.length - 1];
+
+// good
+const first = arr => arr[0];
+const last = arr => first(arr.slice(-1));
+last(arr);
+
+// bad
+const product = (a, b) => a * b;
+const triple = n => n * 3;
+
+// good
+const product = (a, b) => a * b;
+const triple = product.bind(null, 3);
+```
+
+## 依赖
+
+减少第三方库的使用。当你无法完成某项工作时可以使用，但不要为了一些能自己实现的小功能就加载一个很大的库。
+
+```js
+// bad
+var _ = require("underscore");
+_.compact(["foo", 0]));
+_.unique(["foo", "foo"]);
+_.union(["foo"], ["bar"], ["foo"]);
+
+// good
+const compact = arr => arr.filter(el => el);
+const unique = arr => [...Set(arr)];
+const union = (...arr) => unique([].concat(...arr));
+
+compact(["foo", 0]);
+unique(["foo", "foo"]);
+union(["foo"], ["bar"], ["foo"]);
+```
+
+
+## 其他
 
 * 不要混用tab和space；
 
@@ -1664,11 +1762,11 @@ var singleton = new function() {
 * 不允许有空的代码块。
 
 ```js
-// not good
+// bad
 var a   = 1;
 
 function Person() {
-    // not good
+    // bad
     var me = this;
 
     // good
@@ -1696,13 +1794,13 @@ switch (condition) {
     // why no default
 }
 
-// not good with empty block
+// bad with empty block
 if (condition) {
 
 }
 ```
 
-# 杂项
+# 其他
 
 ## images
 
