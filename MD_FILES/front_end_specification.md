@@ -2,19 +2,19 @@
 <h1>
   <br>
   <br>
-  <p align="center">前端规范</p>
-  <br>
+  <p align="center">同一团队代码 应该出自同门</p>
+  </p>
   <br>
 </h1>
+ <br>
+ <br>
+<p align="center"><sub>✨ The same team should come from the same code ✨</sub>
 <br>
 <br>
-<p align="center">✨ 同一团队代码 应该出自同门 ✨</p>
 <br>
 <br>
 
----
-
-# 目录
+## 目录
 
 * [命名规则](#命名规则)
   * [项目命名](#项目命名)
@@ -24,7 +24,7 @@
   * [HTML文件命名](#HTML文件命名)
 * [HTML](#HTML)
   * [语法](#语法)
-  * [HTML5 doctyp](#HTML5 doctyp)
+  * [HTML5文档](#HTML5文档)
   * [lang属性](#lang属性)
   * [字符编码](#字符编码)
   * [IE兼容模式](#IE兼容模式)
@@ -148,7 +148,7 @@
 </html>
 ```
 
-## HTML5 doctype
+## HTML5文档
 
 虽然doctype不区分大小写，但doctype尽量全部大写。
 
