@@ -4,15 +4,16 @@
   <br>
   <p align="center">同一团队代码 应该出自同门</p>
   </p>
-  <br>
 </h1>
  <br>
  <br>
 <p align="center"><sub>✨ The same team should come from the same code ✨</sub>
+<p align="center">
+    <img src="https://img.shields.io/badge/type-%E5%89%8D%E7%AB%AF%E8%A7%84%E8%8C%83-brightgreen.svg"> <img src="https://img.shields.io/badge/%20syntax-markdown-blue.svg"> <img src="https://camo.githubusercontent.com/c512ed89098b02dc3d34be79f906f12f8f68a51a/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c616e67756167652d2545342542382541442545362539362538372d6666363962342e737667">
+</p>
 <br>
 <br>
-<br>
-<br>
+
 
 ## 目录
 
